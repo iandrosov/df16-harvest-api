@@ -4,7 +4,8 @@ var url = require('url');
 
 
 var Default = require('./DefaultService');
-
+var Helper = require('./HelpService');
+var Quota = require('./QuotaService');
 
 module.exports.authorizeGET = function authorizeGET (req, res, next) {
   Default.authorizeGET(req.swagger.params, res, next);
@@ -19,19 +20,19 @@ module.exports.devicePOST = function devicePOST (req, res, next) {
 };
 
 module.exports.helpGET = function helpGET (req, res, next) {
-  Default.helpGET(req.swagger.params, res, next);
+  Helper.helpGET(req.swagger.params, res, next);
 };
 
 module.exports.quotaGET = function quotaGET (req, res, next) {
-  Default.quotaGET(req.swagger.params, res, next);
+  Quota.quotaGET(req.swagger.params, res, next);
 };
 
 module.exports.quotaIdGET = function quotaIdGET (req, res, next) {
-  Default.quotaIdGET(req.swagger.params, res, next);
+  Quota.quotaIdGET(req.swagger.params, res, next);
 };
 
 module.exports.quotaPOST = function quotaPOST (req, res, next) {
-  Default.quotaPOST(req.swagger.params, res, next);
+  Quota.quotaPOST(req.swagger.params, res, next);
 };
 
 module.exports.sampledataGET = function sampledataGET (req, res, next) {

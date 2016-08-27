@@ -3,10 +3,10 @@ swagger: "2.0"
 info:
   description: "**This example has a working backend hosted in Heroku**\n\nYou can\
     \ try all HTTP operation described in this Swagger spec.\n\nFind source code of\
-    \ this API [here](https://github.com/iandrosov/df16-harvest-api)\n"
+    \ this API [here](https://github.com/iandrosov/harvester-api)\n"
   version: "1.0.0"
-  title: "DF16 Harvest Heroku API"
-host: "localhost:8080"
+  title: "Harvester Heroku API"
+host: "harvester-api-dev.herokuapp.com"
 basePath: "/api"
 schemes:
 - "http"

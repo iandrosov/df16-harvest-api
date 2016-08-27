@@ -1,0 +1,56 @@
+{
+    "data": [
+        {
+            "title": "Core Lab TRS",
+             "content": "Theoretical Recoverable Sugar"
+        },
+        {
+             "title": "% Sediment",
+             "content": "The amount of soil and other insoluble solids in the cane juice.\nIt also approximates the amount of soil in the gross cane.\nDry Sediment (80%fiber) increases Cane Fiber."
+        },
+        {
+             "title": "Adjusted Grams Bagasse",
+             "content": "The weighed amount of bagasse (cane plus leaves, tops, grass, sediment) remaining after\npressing the sample. TRS is based on two opposing components:\n weight and quality of juice vs weight and quality of bagasse."
+        },
+        {
+             "title": "Pol Reading",
+             "content": "A measurement of sucrose using a polarimeter."
+        },
+        {
+             "title": "Moisture % Bagasse",
+             "content": "Moisture determined by drying the bagasse sample in an oven. Used to calculate Fiber."
+        },
+        {
+             "title": "Juice Brix",
+             "content": "The amount of all soluble solids (sugars and non-sugars) dissolved in the cane juice."
+        },
+        {
+            "title": "Juice Pol",
+             "content": "Percentage of sucrose in the juice; used instead of 'sucrose' to denote determination by\npolarimeter. A one point decrease in juice pol decreases\n TRS by 15 lbs. Pol is the single most important factor in determining TRS."
+        },
+        {
+             "title": "Juice Purity",
+             "content": "How much of the brix is pure sucrose."
+        },
+        {
+             "title": "Fibraque",
+             "content": "Amount of Fiber in the gross cane. Includes all extraneous material like soil (80% fiber), leaves, tops, roots and grass.\nNet cane fiber can range anywhere from 10-15% depending on variety\nand crop cycle. Soil (80% fiber), leaves (50% fiber), tops (20% fiber), plus\n roots and grass all increase fiber. The second most important\n factor effecting TRS. Fibraque is just a technical term correcting for a small amount of non-pol water associated with the cane plant."
+        },
+        {
+             "title": "Cane: Brix, Pol, Fibrq",
+             "content": "Qualities expressed as percentage of the gross cane as delivered."
+        },
+        {
+             "title": "Gross cane",
+             "content": "Cane as delivered including trash (leaves, tops, roots, grass, and field soil)"
+        },
+        {
+             "title": "Net cane",
+             "content": "Cane free of trash (leaves, tops, roots, grass, and field soil)"
+        },
+        {
+            "title": "Statistical Note",
+             "content": "Gross Sugarcane as delivered is not a very homogenous material.\nThe statistical error of one given sample is 7%.\nThis drops to 3.5% for 4 samples,\n and 0.84% for 70 samples.\nJust 3 samples per day on a 100 day crop would have a statistical error of only 0.40%,\n or less than one pound of sugar per ton."
+             }
+    ]
+}
