@@ -1,0 +1,553 @@
+---
+swagger: "2.0"
+info:
+  description: "**This example has a working backend hosted in Heroku**\n\nYou can\
+    \ try all HTTP operation described in this Swagger spec.\n\nFind source code of\
+    \ this API [here](https://github.com/iandrosov/df16-harvest-api)\n"
+  version: "1.0.0"
+  title: "DF16 Harvest Heroku API"
+host: "localhost:8080"
+basePath: "/api"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+- "application/x-www-form-urlencoded"
+produces:
+- "application/json"
+paths:
+  /authorize:
+    get:
+      operationId: "authorizeGET"
+      parameters:
+      - name: "apikey"
+        in: "header"
+        description: "string api access key"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "App authorization"
+          schema:
+            $ref: "#/definitions/AuthModel"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    put:
+      operationId: "authorizePUT"
+      parameters:
+      - name: "apikey"
+        in: "header"
+        description: "string apiaccess key"
+        required: false
+        type: "string"
+      - name: "username"
+        in: "header"
+        description: "User name as string"
+        required: false
+        type: "string"
+      - name: "password"
+        in: "header"
+        description: "User passcode as string"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "get API authorization token"
+          schema:
+            $ref: "#/definitions/AuthModel"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestAuthorize"
+  /device:
+    post:
+      operationId: "devicePOST"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "user device token info"
+        required: false
+        schema:
+          $ref: "#/definitions/Device"
+      responses:
+        200:
+          description: "Save device token"
+          schema:
+            $ref: "#/definitions/Settings"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestDevice"
+  /help:
+    get:
+      operationId: "helpGET"
+      parameters: []
+      responses:
+        200:
+          description: "get harvest survey data"
+          schema:
+            $ref: "#/definitions/HelpText"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestHelper"
+  /quota:
+    get:
+      operationId: "quotaGET"
+      parameters:
+      - name: "growerid"
+        in: "query"
+        description: "string id to get quota"
+        required: true
+        type: "string"
+      - name: "date"
+        in: "query"
+        description: "date for harvest quota"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "get harvest quota"
+          schema:
+            $ref: "#/definitions/Quotas"
+        400:
+          description: "Invalid date format should be in format YYYY-MM-DD"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    post:
+      operationId: "quotaPOST"
+      parameters:
+      - in: "body"
+        name: "quotaid"
+        description: "The parameter you want to post"
+        required: false
+        schema:
+          $ref: "#/definitions/QuotaUpdate"
+      responses:
+        200:
+          description: "get harvest quota"
+          schema:
+            $ref: "#/definitions/Quotas"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestQuota"
+  /quota/{id}:
+    get:
+      operationId: "quotaIdGET"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the pet"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Sends the pet with pet Id"
+          schema:
+            $ref: "#/definitions/Quota"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+  /sampledata:
+    get:
+      operationId: "sampledataGET"
+      parameters:
+      - name: "growerid"
+        in: "query"
+        description: "user id"
+        required: false
+        type: "string"
+      - name: "date"
+        in: "query"
+        description: "harvest current date"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "get harvest sample stats"
+          schema:
+            $ref: "#/definitions/CompositStats"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestSample"
+  /settings:
+    get:
+      operationId: "settingsGET"
+      parameters:
+      - name: "growerid"
+        in: "query"
+        description: "user id"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "get user setting by id"
+          schema:
+            $ref: "#/definitions/Settings"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestSettings"
+  /survey:
+    get:
+      operationId: "surveyGET"
+      parameters:
+      - name: "growerid"
+        in: "query"
+        description: "user id"
+        required: false
+        type: "string"
+      - name: "date"
+        in: "query"
+        description: "harvest current date"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "get harvest survey data"
+          schema:
+            $ref: "#/definitions/Surveys"
+        default:
+          description: "error payload"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-swagger-router-controller: "Default"
+    x-swagger-router-controller: "harvestSurvey"
+definitions:
+  Quotas:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      published_at:
+        type: "string"
+        format: "date-time"
+      growerid:
+        type: "string"
+      almaestimate:
+        type: "integer"
+        format: "int32"
+      data:
+        type: "array"
+        items:
+          $ref: "#/definitions/Quota"
+  Quota:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      quota:
+        type: "string"
+      canein:
+        type: "integer"
+        format: "int32"
+      trucksin:
+        type: "integer"
+        format: "int32"
+      trucksremaining:
+        type: "integer"
+        format: "int32"
+      datetimeupdated:
+        type: "string"
+        format: "date-time"
+      maingrowerid:
+        type: "string"
+      reason:
+        type: "string"
+      status:
+        type: "string"
+      quota_change:
+        type: "integer"
+        format: "int32"
+  QuotaUpdate:
+    properties:
+      quotaid:
+        type: "integer"
+        description: "quota id to update"
+      response:
+        type: "string"
+        description: "accepted quota value"
+      reason_notes:
+        type: "string"
+      quota_adjusted:
+        type: "integer"
+      action:
+        type: "string"
+    description: "Quota update object"
+  AuthModel:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      apikey:
+        type: "string"
+      growerid:
+        type: "string"
+  Device:
+    properties:
+      growerid:
+        type: "string"
+      devicetoken:
+        type: "string"
+  CompositStats:
+    properties:
+      status:
+        type: "string"
+      published_at:
+        type: "string"
+        format: "date-time"
+      growerid:
+        type: "string"
+      data:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            $ref: "#/definitions/LabStats"
+      groweraverage:
+        $ref: "#/definitions/AverageLabStats"
+      allaverage:
+        $ref: "#/definitions/AverageLabStats"
+      diff:
+        $ref: "#/definitions/AverageLabStats"
+    description: "Composite lab statistics object"
+  LabStats:
+    properties:
+      sampleid:
+        type: "string"
+      id:
+        type: "integer"
+      rs:
+        type: "number"
+        format: "double"
+      seq:
+        type: "string"
+      acct:
+        type: "string"
+      sampledate:
+        type: "string"
+        format: "date-time"
+      maingrowerid:
+        type: "string"
+      res:
+        type: "number"
+        format: "double"
+      moistare:
+        type: "number"
+        format: "double"
+      moismw:
+        type: "number"
+        format: "double"
+      moismd:
+        type: "number"
+        format: "double"
+      pjbrx:
+        type: "number"
+        format: "double"
+      pjpolar:
+        type: "number"
+        format: "double"
+      mlmud:
+        type: "number"
+        format: "double"
+      mud:
+        type: "number"
+        format: "double"
+      adjresidue:
+        type: "number"
+        format: "double"
+      percentsediment:
+        type: "number"
+        format: "double"
+      adjgramsbag:
+        type: "number"
+        format: "double"
+      polread:
+        type: "number"
+        format: "double"
+      moistpercentbag:
+        type: "number"
+        format: "double"
+      juicebrix:
+        type: "number"
+        format: "double"
+      juicepol:
+        type: "number"
+        format: "double"
+      juicepurity:
+        type: "number"
+        format: "double"
+      canebrix:
+        type: "number"
+        format: "double"
+      canepol:
+        type: "number"
+        format: "double"
+      canefibrq:
+        type: "number"
+        format: "double"
+      labtrs:
+        type: "number"
+        format: "double"
+      urlpath:
+        type: "string"
+      sumtotal:
+        type: "number"
+        format: "double"
+    description: "Lab statistics object"
+  AverageLabStats:
+    properties:
+      corelabtrs:
+        type: "number"
+        format: "double"
+      estmillcrs:
+        type: "number"
+        format: "double"
+      juicebrix:
+        type: "number"
+        format: "double"
+      juicepol:
+        type: "number"
+        format: "double"
+      juicepurity:
+        type: "number"
+        format: "double"
+      fibraque:
+        type: "number"
+        format: "double"
+      sediment:
+        type: "number"
+        format: "double"
+      adjgramsbag:
+        type: "number"
+        format: "double"
+      growerno:
+        type: "string"
+    description: "Average Lab sttaistics object"
+  Surveys:
+    properties:
+      status:
+        type: "string"
+      published_at:
+        type: "string"
+        format: "date-time"
+      growerid:
+        type: "string"
+      survey:
+        type: "string"
+      data:
+        type: "array"
+        items:
+          $ref: "#/definitions/Survey"
+    description: "List of Survey objects"
+  Survey:
+    properties:
+      id:
+        type: "integer"
+      date:
+        type: "string"
+        format: "date-time"
+      totalacres:
+        type: "number"
+        format: "double"
+      totaltonacre:
+        type: "number"
+        format: "double"
+      total:
+        type: "number"
+        format: "double"
+      lessharvestacres:
+        type: "number"
+        format: "double"
+      lesstonacre:
+        type: "number"
+        format: "double"
+      lesstotal:
+        type: "number"
+        format: "double"
+      remainacres:
+        type: "number"
+        format: "double"
+      remaintonacre:
+        type: "number"
+        format: "double"
+      remaintotal:
+        type: "number"
+        format: "double"
+      totalalma:
+        type: "number"
+        format: "double"
+      totalalmatons:
+        type: "number"
+        format: "double"
+      growerid:
+        type: "string"
+    description: "Survey data object"
+  HelpText:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        items:
+          $ref: "#/definitions/Help"
+    description: "List of help text objects"
+  Help:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      content:
+        type: "string"
+  Settings:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      growerid:
+        type: "string"
+      samplenotificationflag:
+        type: "string"
+      intouchurl:
+        type: "string"
+      pubreporturl:
+        type: "string"
+      published_at:
+        type: "string"
+        format: "date-time"
+  ErrorModel:
+    type: "object"
+    properties:
+      result:
+        type: "string"
+      resultDetails:
+        type: "string"
