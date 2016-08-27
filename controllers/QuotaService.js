@@ -124,14 +124,6 @@ exports.quotaGET = function(args, res, next) {
 
     var examples = {};
     examples['application/json'] = {
-      "data" : eq.map(quotaTransform),
-      "almaestimate" : 123,
-      "published_at" : "2016-08-13 15:09:25",
-      "growerid" : "A901",
-      "status" : "Success"
-    };
-
-    examples['application/json'] = {
       "data" : [ 
        {
         "id": 32,
