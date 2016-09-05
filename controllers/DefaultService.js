@@ -104,7 +104,7 @@ exports.quotaGET = function(args, res, next) {
     "canein": 100,
     "trucksin": 10,
     "trucksremaining": 5,
-    "datetimeupdated": "2016-06-25 09:37:04",
+    "datetimeupdated": "2016-09-04 09:37:04",
     "maingrowerid": "A901",
     "reason": "8",
     "status": "Adjust",
@@ -116,14 +116,14 @@ exports.quotaGET = function(args, res, next) {
     "reason" : null,
     "trucksin" : 123,
     "quota_change" : null,
-    "datetimeupdated" : "2016-08-13 15:09:25",
+    "datetimeupdated" : "2016-09-05 15:09:25",
     "quota" : "25",
     "id" : 123,
     "maingrowerid" : "A901",
     "status" : null
   } ],
   "almaestimate" : 123,
-  "published_at" : "2016-08-13 15:09:25",
+  "published_at" : "2016-09-05 15:09:25",
   "growerid" : "A901",
   "status" : "Success"
 };
@@ -272,12 +272,12 @@ exports.settingsGET = function(args, res, next) {
   **/
     var examples = {};
   examples['application/json'] = {
-  "samplenotificationflag" : "aeiou",
+  "samplenotificationflag" : "false",
   "pubreporturl" : "aeiou",
   "intouchurl" : "http://almaplantation.intouchgps.com/readings/public/318857",
-  "published_at" : "2000-01-23T04:56:07.000+00:00",
-  "growerid" : "aeiou",
-  "status" : "aeiou"
+  "published_at" : "2016-09-05 15:09:25",
+  "growerid" : "A901",
+  "status" : "Success"
 };
   if(Object.keys(examples).length > 0) {
     res.setHeader('Content-Type', 'application/json');
