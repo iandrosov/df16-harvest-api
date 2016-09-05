@@ -274,7 +274,7 @@ exports.settingsGET = function(args, res, next) {
   examples['application/json'] = {
   "samplenotificationflag" : "aeiou",
   "pubreporturl" : "aeiou",
-  "intouchurl" : "aeiou",
+  "intouchurl" : "http://almaplantation.intouchgps.com/readings/public/318857",
   "published_at" : "2000-01-23T04:56:07.000+00:00",
   "growerid" : "aeiou",
   "status" : "aeiou"
