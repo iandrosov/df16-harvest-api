@@ -76,8 +76,8 @@ exports.quotaGET = function(args, res, next) {
       "data" : [ 
        {
         "id": 32,
-        "quota": "2",
-        "canein": 100,
+        "quota": "20",
+        "canein": 10,
         "trucksin": 10,
         "trucksremaining": 5,
         "datetimeupdated": "2016-06-25 09:37:04",
