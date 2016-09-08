@@ -60,57 +60,6 @@ exports.quotaGET = function(args, res, next) {
   const growerid = args.growerid.value;
   console.log('### ID '+growerid);
 
-/*
-    var examples = {};
-  examples['application/json'] = {
-  "data" : eq.map(quotaTransform),
-  "almaestimate" : 123,
-  "published_at" : "2016-08-13 15:09:25",
-  "growerid" : "A901",
-  "status" : "Success"
-  };
-*/
-/*
-  examples['application/json'] = {
-  "data" : [ 
-   {
-    "id": 32,
-    "quota": "2",
-    "canein": 100,
-    "trucksin": 10,
-    "trucksremaining": 5,
-    "datetimeupdated": "2016-06-25 09:37:04",
-    "maingrowerid": "A901",
-    "reason": "8",
-    "status": "Adjust",
-    "quota_change": 8
-  },
-  {
-    "canein" : 123,
-    "trucksremaining" : 123,
-    "reason" : null,
-    "trucksin" : 123,
-    "quota_change" : null,
-    "datetimeupdated" : "2016-08-13 15:09:25",
-    "quota" : "25",
-    "id" : 123,
-    "maingrowerid" : "A901",
-    "status" : null
-  } ],
-  "almaestimate" : 123,
-  "published_at" : "2016-08-13 15:09:25",
-  "growerid" : "A901",
-  "status" : "Success"
-};
-
-  if(Object.keys(examples).length > 0) {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(examples[Object.keys(examples)[0]] || {}, null, 2));
-  }
-  else {
-    res.end();
-  }
-*/
   new Quotas().fetch({ grower_id__c: growerid }).then((eq) => {
     const rest_eq = quotaCollectionTransform(eq);
     console.log('\n\nQuota Stringified:\n');
