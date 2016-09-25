@@ -6,19 +6,20 @@ info:
     \ this API [here](https://github.com/iandrosov/harvester-api)\n"
   version: "1.0.0"
   title: "Harvester Heroku API"
-host: "harvester-api-dev.herokuapp.com"
+host: "127.0.0.1:8080"
 basePath: "/api"
 schemes:
 - "http"
 - "https"
 consumes:
 - "application/json"
-- "application/x-www-form-urlencoded"
 produces:
 - "application/json"
 paths:
   /authorize:
     get:
+      tags:
+      - "Authorize"
       operationId: "authorizeGET"
       parameters:
       - name: "apikey"
@@ -35,8 +36,10 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "Authorize"
     put:
+      tags:
+      - "Authorize"
       operationId: "authorizePUT"
       parameters:
       - name: "apikey"
@@ -63,10 +66,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestAuthorize"
+      x-swagger-router-controller: "Authorize"
   /device:
     post:
+      tags:
+      - "Device"
       operationId: "devicePOST"
       parameters:
       - in: "body"
@@ -84,10 +88,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestDevice"
+      x-swagger-router-controller: "Device"
   /help:
     get:
+      tags:
+      - "Help"
       operationId: "helpGET"
       parameters: []
       responses:
@@ -99,10 +104,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestHelper"
+      x-swagger-router-controller: "Help"
   /quota:
     get:
+      tags:
+      - "Quota"
       operationId: "quotaGET"
       parameters:
       - name: "growerid"
@@ -132,8 +138,10 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "Quota"
     post:
+      tags:
+      - "Quota"
       operationId: "quotaPOST"
       parameters:
       - in: "body"
@@ -151,10 +159,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestQuota"
+      x-swagger-router-controller: "Quota"
   /quota/{id}:
     get:
+      tags:
+      - "Quota"
       operationId: "quotaIdGET"
       parameters:
       - name: "id"
@@ -171,9 +180,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "Quota"
   /sampledata:
     get:
+      tags:
+      - "Sample"
       operationId: "sampledataGET"
       parameters:
       - name: "growerid"
@@ -195,10 +206,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestSample"
+      x-swagger-router-controller: "Sample"
   /settings:
     get:
+      tags:
+      - "Settings"
       operationId: "settingsGET"
       parameters:
       - name: "growerid"
@@ -215,10 +227,11 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
-    x-swagger-router-controller: "harvestSettings"
+      x-swagger-router-controller: "Settings"
   /survey:
     get:
+      tags:
+      - "Survey"
       operationId: "surveyGET"
       parameters:
       - name: "growerid"
@@ -240,7 +253,7 @@ paths:
           description: "error payload"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-swagger-router-controller: "Default"
+      x-swagger-router-controller: "Survey"
     x-swagger-router-controller: "harvestSurvey"
 definitions:
   Quotas:
