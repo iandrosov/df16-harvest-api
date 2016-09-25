@@ -1,6 +1,6 @@
 'use strict';
 
-var help = require("../help/help.json");
+var help = require("../help/help-df16.json");
 
 exports.helpGET = function(args, res, next) {
   /**
