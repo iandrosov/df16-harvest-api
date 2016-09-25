@@ -2,7 +2,7 @@
 {
   "name": "Node.js Harvester App API",
   "description": "A Swagger Node.js app using Express 4, DB, Promises etc.",
-  "repository": "https://github.com/iandrosov/harvester-api",
+  "repository": "https://github.com/iandrosov/df16-harvest-api",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
   "keywords": ["node", "express", "static"]
 }
