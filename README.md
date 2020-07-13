@@ -1,7 +1,7 @@
 # Swagger harvester-api
 
 ## Overview
-Harvester App API manage harvest quotas, reports and track crop harvest progeress. 
+Harvester App API for Mobile app to manage harvest quotas, reports and track crop harvest progeress. 
 This Node app demonstrates use of 12 factor app methodology and Swagger for API design and documentation. The fetures of this example include a web template with REST API, PostgresDB access methods using SQL, promise and ORM methods. This app also demonstartes use of pipelines, github for deployment, and Express and Authentication with Social logins.
 
 For quick startup use this Heroku button below.
